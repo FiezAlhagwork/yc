@@ -1,16 +1,9 @@
 // import StartupCard from "@/components/StartupCard";
-// import SearchForm from "../../components/SearchForm";
 
-export interface StartupTypeCard {
-  _id: number;
-  _createAt: Date;
-  views: number;
-  author: {authorId: number; name: string };
-  description: string;
-  image: string;
-  category: string;
-  title: string;
-}
+import SearchForm from "@/components/SearchForm";
+import StartupCard from "@/components/StartupCard";
+import { StartupTypeCard } from "@/types";
+
 
 export default async function Home({
   searchParams,
@@ -21,7 +14,7 @@ export default async function Home({
 
   const posts = [
     {
-      _id:1213,
+      _id: 1213,
       _createAt: new Date(),
       views: 55,
       author: { authorId: 1, name: "fiez" },
@@ -31,6 +24,7 @@ export default async function Home({
       title: "We Robots",
     },
   ];
+
   return (
     <>
       <section className="pink_container pattern">
@@ -44,7 +38,7 @@ export default async function Home({
           Competitions.
         </p>
 
-        {/* <SearchForm query={query} /> */}
+        <SearchForm query={query} />
       </section>
 
       <section className="section_container">
@@ -55,9 +49,8 @@ export default async function Home({
         <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
             posts.map((post: StartupTypeCard) => (
-            //   <StartupCard key={post._id} post={post} />
-            <></>
-            ))
+                  <StartupCard key={post._id} post={post}/>
+              ))
           ) : (
             <p className="no-results"> No startups Found</p>
           )}
