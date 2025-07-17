@@ -2,7 +2,7 @@ export interface StartupTypeCard {
   _id: number;
   _createAt: Date;
   views: number;
-  author: { authorId: number; name: string };
+  author: { _id: string; name: string; image: string; bio: string };
   description: string;
   image: string;
   category: string;

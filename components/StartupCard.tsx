@@ -8,14 +8,14 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   const {
     _createAt,
     views,
-    author: { authorId, name },
+    author,
     _id,
     title,
     description,
     category,
+    image
   } = post;
 
-  
   return (
     <li className="startup-card group">
       <div className="flex-between">
@@ -28,30 +28,36 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
 
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${authorId}`}>
-            <p className="text-16-medium line-clamp-1">{name}</p>
+          <Link href={`/user/${author?._id}`}>
+            <p className="text-16-medium line-clamp-1">{author.name}</p>
           </Link>
           <Link href={`/startup/${_id}`}>
             <h3 className="text-20-medium line-clamp-1">{title}</h3>
           </Link>
         </div>
 
-        <Link href={`/user/${authorId}`}>
-          {/* <Image
-            src="https://placehold.co/48x48"
-            alt="avatr"
+        <Link href={`/user/${author?._id}`}>
+          <Image
+            src={author.image}
+            alt="avatar"
             width={48}
             height={48}
             className=" rounded-full"
-          /> */}
-          <span className=" rounded-full w-48 h-48 bg-gray-600 p-3">434 </span>
+          />
+          {/* <span className=" rounded-full w-48 h-48 bg-gray-600 p-3">434 </span> */}
         </Link>
       </div>
 
       <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
-
-        <img src="/robot.jpg" alt="placeholder" className="startup-card_img" />
+       <Image
+            src={image}
+            alt="placeholder"
+            width={48}
+            height={48}
+            className="startup-card_img"
+          />
+        {/* <img src="/robot.jpg" alt="" className="startup-card_img" /> */}
       </Link>
 
       <div className="flex-between gap-3 mt-5">
