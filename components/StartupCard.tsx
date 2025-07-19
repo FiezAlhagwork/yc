@@ -4,7 +4,7 @@ import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const StartupCard = ({ post }: { post: StartupTypeCard }) => {
+const StartupCard = ({ post }: { post: Omit<StartupTypeCard, "patch">}) => {
   const {
     _createAt,
     views,
@@ -44,7 +44,6 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             height={48}
             className=" rounded-full"
           />
-          {/* <span className=" rounded-full w-48 h-48 bg-gray-600 p-3">434 </span> */}
         </Link>
       </div>
 
@@ -57,7 +56,6 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             height={48}
             className="startup-card_img"
           />
-        {/* <img src="/robot.jpg" alt="" className="startup-card_img" /> */}
       </Link>
 
       <div className="flex-between gap-3 mt-5">
