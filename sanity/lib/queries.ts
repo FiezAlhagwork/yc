@@ -38,10 +38,6 @@ export const STARTUP_BY_ID_QUERY = defineQuery(
   }`
 );
 
-// export const STARTUP_VIEWS_QUERY =
-//   defineQuery(`*[_type == "startup" && _id == $id][0]{
-//     _id
-//   view}`);
 
 
   export const STARTUP_VIEWS_QUERY = defineQuery(`
@@ -50,3 +46,14 @@ export const STARTUP_BY_ID_QUERY = defineQuery(
     views
   }
 `);
+
+
+export const AUTHOR_BY_ID_QUERY = defineQuery(`*[_type == "author" && id == $id][0]{
+    _id,
+    id,
+    name,
+    username,
+    image,
+    bio,
+    email
+  }`)

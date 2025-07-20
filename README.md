@@ -1,3 +1,21 @@
+# YC Director
+
+YC Director is a modern web application built to showcase and manage YC startup data in a clean and efficient user interface. The platform is powered by the latest web technologies and follows best practices in performance, security, and scalability.
+
+## 🚀 Tech Stack
+
+- **Next.js 15** — Full-stack React framework for fast and scalable web applications.
+- **React 19** — Modern and performant UI library with new features like React Compiler.
+- **TypeScript** — Type-safe JavaScript development for more robust and readable code.
+- **Sanity.io** — Headless CMS for flexible content management and structured data.
+- **NextAuth.js** — Authentication for Next.js using OAuth providers, credentials, etc.
+
+---
+
+## 📁 Project Structure
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
