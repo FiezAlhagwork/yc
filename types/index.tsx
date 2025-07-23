@@ -1,3 +1,8 @@
+import { startupFormSchema } from "@/schema/StartupFormSchema";
+import z from "zod";
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
+
+
 export interface Author {
   _id: number;
   name: string;
@@ -19,5 +24,18 @@ export interface StartupTypeCard {
   patch:string
 }
 
+export type Input = {
+  error?: FieldError;
+  registration: UseFormRegisterReturn;
+} & React.ComponentProps<"input">;
+
+
+export type TextArea = {
+   error?: FieldError;
+  registration: UseFormRegisterReturn;
+}  & React.ComponentProps<"textarea">
+
+
+export type StartupFromType = z.infer<typeof startupFormSchema >
 
 
