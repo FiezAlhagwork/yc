@@ -18,11 +18,11 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const post: StartupTypeCard = await client.fetch(STARTUP_BY_ID_QUERY, { id });
   if (!post) return notFound();
 
-  const parsedContent = md.render(post.patch || "");
+  const parsedContent = md.render(post.pitch || "");
   return (
     <>
       <section className="pink_container !min-h-[230px] pattern">
-        <p className="tag tag-tri">{formatData(post?._createAt)}</p>
+        <p className="tag tag-tri">{formatData(post?._createdAt)}</p>
         <h1 className="heading">{post.title}</h1>
         <p className="sub-heading !max-w-5xl">{post.description}</p>
       </section>
