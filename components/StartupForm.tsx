@@ -7,13 +7,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { startupFormSchema } from "@/schema/StartupFormSchema";
 import { Textarea } from "./ui/textarea";
 import MDEditor from "@uiw/react-md-editor";
-import { useActionState, useState } from "react";
+import {  useState } from "react";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
-import { z } from "zod";
-import { useRouter } from "next/router";
-// import { createPitch } from "@/lib/actions";
+import { useRouter } from "next/navigation";
 
 const StartupForm = () => {
   const {
@@ -24,15 +22,14 @@ const StartupForm = () => {
 
   const [pitch, setPitch] = useState("");
   const [errorPitch, setErrorPitch] = useState("");
-  // const router = useRouter()
+  const router = useRouter();
 
   const onSubmit = async (data: StartupFromType) => {
     try {
-      console.log(data);
 
       if (pitch.length < 10) {
-        setErrorPitch("Patch must be at least 10 characters long.");
-        toast.error("Patch is required", {
+        setErrorPitch("Pitch must be at least 10 characters long.");
+        toast.error("Pitch is required", {
           description: "Your item is now live.",
           style: { background: "#ff5555", color: "#fff" },
           position: "top-center",
@@ -42,31 +39,30 @@ const StartupForm = () => {
       }
       setErrorPitch("");
 
-      // const result = await createPitch(data ,pitch);
+      const res = await fetch("/api/pitch", {
+        method: "POST",
+        body: JSON.stringify({ ...data, pitch }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    //   if (result.status === "SUCCESS") {
-    //   toast.success("Success",{
-    //     description: "Your startup pitch has been created successfully",
-    //   });
+      const result = await res.json()
 
-    //   router.push(`/startup/${result._id}`);
-    //   return result
-    //   } else {
+      if (result.status === "SUCCESS") {
+        toast.success("Success", {
+          description: "Your startup pitch has been created successfully",
+        });
 
-    // toast.error("Error", {
-    //   description: "Please check your inputs and try again",
-    //   style: { background: "#ff5555", color: "#fff" },
-    // });
-    //   }
+        router.push(`/startup/${result._id}`);
+        return result;
+      }
     } catch (error) {
-
-    toast.error("Error", {
-      description: "Please check your inputs and try again",
-      style: { background: "#ff5555", color: "#fff" },
-      position: "top-center",
-    });
-
-  }}
+      toast.error("Error", {
+        description: "Please check your inputs and try again",
+        style: { background: "#ff5555", color: "#fff" },
+        position: "top-center",
+      });
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="startup-form">

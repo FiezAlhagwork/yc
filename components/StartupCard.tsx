@@ -4,9 +4,10 @@ import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const StartupCard = ({ post }: { post: Omit<StartupTypeCard, "patch">}) => {
+const StartupCard = ({ post }: { post: Omit<StartupTypeCard, "pitch">}) => {
   const {
-    _createAt,
+    _createdAt
+,
     views,
     author,
     _id,
@@ -16,10 +17,13 @@ const StartupCard = ({ post }: { post: Omit<StartupTypeCard, "patch">}) => {
     image
   } = post;
 
+
+
   return (
     <li className="startup-card group">
       <div className="flex-between">
-        <p className="startup_card_data">{formatData(_createAt)}</p>
+        <p className="startup_card_data">{formatData(_createdAt
+)}</p>
         <div className="flex gap-1.5">
           <EyeIcon className="size-6 text-primary" />
           <span className=" text-16-medium">{views}</span>

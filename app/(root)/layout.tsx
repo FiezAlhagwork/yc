@@ -4,7 +4,7 @@ import { Toaster } from "sonner";
 
 const layout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
-    <main className=" font-work-sans ">
+    <main className=" ">
       <Navbar />
       {children}
       <Toaster/>
